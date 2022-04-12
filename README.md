@@ -1,16 +1,19 @@
 # GitHub Bash Script Runner
 
-Downloads the content of a script hosted in GitHub and runs it as a bash script. Is very similar to Remote Bash Script Runner Step but you can use it with private repos and you can pass arguments.
+Downloads the content of a script hosted in GitHub and runs it as a bash script. 
+It is very similar to [Remote Bash Script Runner Step](https://github.com/bitrise-steplib/steps-remote-script-runner) but it allows you to do a couple of things more:
+
+1. You can use it with private repos
+2. You can pass command line arguments
 
 
 ## How to use this Step
 
 Can be run directly with the [bitrise CLI](https://github.com/bitrise-io/bitrise),
 just `git clone` this repository, `cd` into it's folder in your Terminal/Command Line
-and call `bitrise run test`.
+and call `bitrise run cli-test`.
 
-*Check the `bitrise.yml` file for required inputs which have to be
-added to your `.bitrise.secrets.yml` file!*
+*Add `GITHUB_TOKEN`to your `.bitrise.secrets.yml` file!*
 
 Step by step:
 
@@ -19,19 +22,17 @@ Step by step:
 3. `cd` into the directory of the step (the one you just `git clone`d)
 5. Create a `.bitrise.secrets.yml` file in the same directory of `bitrise.yml`
    (the `.bitrise.secrets.yml` is a git ignored file, you can store your secrets in it)
-6. Check the `bitrise.yml` file for any secret you should set in `.bitrise.secrets.yml`
-  * Best practice is to mark these options with something like `# define these in your .bitrise.secrets.yml`, in the `app:envs` section.
-7. Once you have all the required secret parameters in your `.bitrise.secrets.yml` you can just run this step with the [bitrise CLI](https://github.com/bitrise-io/bitrise): `bitrise run test`
+6. Add your GitHub personal access token to `.bitrise.secrets.yml` (use `GITHUB_TOKEN` as the key)
+7. Run this step with the [bitrise CLI](https://github.com/bitrise-io/bitrise): `bitrise run cli-test`
 
 An example `.bitrise.secrets.yml` file:
 
 ```
 envs:
-- A_SECRET_PARAM_ONE: the value for secret one
-- A_SECRET_PARAM_TWO: the value for secret two
+- GITHUB_TOKEN: {your_personal_access_token}
 ```
 
-## How to create your own step
+## How to create your own step - RPE-1055: remove this section
 
 1. Create a new git repository for your step (**don't fork** the *step template*, create a *new* repository)
 2. Copy the [step template](https://github.com/bitrise-steplib/step-template) files into your repository
@@ -61,7 +62,7 @@ If you want to use your step in your project's `bitrise.yml`:
 You can find more examples of step reference styles
 in the [bitrise CLI repository](https://github.com/bitrise-io/bitrise/blob/master/_examples/tutorials/steps-and-workflows/bitrise.yml#L65).
 
-## How to contribute to this Step
+## How to contribute to this Step - RPE-1055: remove this section
 
 1. Fork this repository
 2. `git clone` it
@@ -77,7 +78,7 @@ in the [bitrise CLI repository](https://github.com/bitrise-io/bitrise/blob/maste
 7. Once you're done just commit your changes & create a Pull Request
 
 
-## Share your own Step
+## Share your own Step - RPE-1055: remove this section
 
 You can share your Step or step version with the [bitrise CLI](https://github.com/bitrise-io/bitrise). If you use the `bitrise.yml` included in this repository, all you have to do is:
 
