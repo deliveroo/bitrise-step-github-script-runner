@@ -19,7 +19,7 @@ workflows:
         - repository: deliveroo/mobile-scripts
         - script_path: promon/promon-upload-file.sh
         - branch: eugenio/RPE-972/promon-shield-upload-app
-        - command_line_arguments: --local-file-path "/Users/giuseppemorana/Desktop/Promon Uploader/test.txt" --remote-folder-path "deliveroo/Upload/rider"
+        - command_line_arguments: --local-file-path "$BITRISE_SOURCE_DIR/README.md" --remote-folder-path "deliveroo/Upload/rider"
         - github_token: $GITHUB_TOKEN
   github-test:
     steps:
@@ -31,7 +31,7 @@ workflows:
         - repository: deliveroo/mobile-scripts
         - script_path: promon/promon-upload-file.sh
         - branch: eugenio/RPE-972/promon-shield-upload-app
-        - command_line_arguments: --local-file-path "/Users/giuseppemorana/Desktop/Promon Uploader/test.txt" --remote-folder-path "deliveroo/Upload/rider"
+        - command_line_arguments: --local-file-path "$BITRISE_SOURCE_DIR/README.md" --remote-folder-path "deliveroo/Upload/rider"
         - github_token: $GITHUB_TOKEN
         
 
