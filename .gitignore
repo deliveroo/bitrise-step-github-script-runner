@@ -1,5 +1,2 @@
 .bitrise*
 .gows.user.yml
-
-# The name of the script downloaded locally before running it
-remote-script.sh

@@ -48,6 +48,7 @@ If you want to use your step in your project's `bitrise.yml`, reference it in yo
    - script_path: {path_relative_to_repo_root} (e.g. promon/promon-upload-file.sh)
    - branch: {default=master}
    - command_line_arguments: {the same arguments you'd pass to a local script} (e.g. --local-file-path "$BITRISE_SOURCE_DIR/README.md" --remote-folder-path "deliveroo/Upload/rider")
+   - tmp_folder: {where you want to put all temporary files created by the script or leave it empty if you want to use the default "$BITRISE_SOURCE_DIR/tmp"}
    - github_token: {your personal access token or leave it empty if you have a GITHUB_TOKEN secret configured}
 ```
 

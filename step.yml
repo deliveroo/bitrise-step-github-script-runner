@@ -40,7 +40,7 @@ inputs:
       summary: The path is relative to the root of the repo.
       is_expand: true
       is_required: true
-  - branch: "master"
+  - branch: master
     opts:
       title: The git branch
       summary: The default value is "master" but if your script leaves in a specific git branch, you need to specify it.
@@ -48,14 +48,14 @@ inputs:
       is_required: true
   - command_line_arguments:
     opts:
-      title: The arguments to pass to the remote script
+      title: The arguments to pass to the remote script (optional)
       summary: Each script has its own usage and expects a completely different set of command line arguments. E.g. if a script usage says `script.sh --key1 val1 --key2 val2`, just write `--key1 val1 --key2 val2`, omitting the name of the script.
       is_expand: true
-      is_required: true
-  - command_line_arguments:
+      is_required: false
+  - tmp_folder: "$BITRISE_SOURCE_DIR/tmp"
     opts:
-      title: The arguments to pass to the remote script
-      summary: Each script has its own usage and expects a completely different set of command line arguments. E.g. if a script usage says `script.sh --key1 val1 --key2 val2`, just write `--key1 val1 --key2 val2`, omitting the name of the script.
+      title: The path of the folder where to put temporary files
+      summary: The step might need to create temporary files (e.g. the downloaded remote script). By default it will use "$BITRISE_SOURCE_DIR/tmp" but you can override it if you want to.
       is_expand: true
       is_required: true
   - github_token: $GITHUB_TOKEN

@@ -32,19 +32,29 @@ if [ -z $github_token ]; then
     exit 1
 fi
 
+if [ -z $tmp_folder ]; then
+    echoerr "Missing \$tmp_folder env var"
+    exit 1
+fi
+
 echo "repository = $repository"
 echo "script_path = $script_path"
 echo "branch = $branch"
 echo "command_line_arguments = $command_line_arguments"
+echo "tmp_folder = $tmp_folder"
+
+mkdir -p $tmp_folder
 
 echo "Downloading the remote script locally..."
 
+downloaded_script_path="$tmp_folder/remote-script.sh"
+
 curl -H "Authorization: token $GITHUB_TOKEN" \
   -H 'Accept: application/vnd.github.v3.raw' \
-  -sSL "https://api.github.com/repos/$repository/contents/$script_path?ref=$branch" &> remote-script.sh
-chmod +x remote-script.sh
+  -sSL "https://api.github.com/repos/$repository/contents/$script_path?ref=$branch" &> $downloaded_script_path
+chmod +x $downloaded_script_path
 
 echo "Running the remote script..."
 
-command="./remote-script.sh $command_line_arguments"
+command="$downloaded_script_path $command_line_arguments"
 bash -c "$command"
