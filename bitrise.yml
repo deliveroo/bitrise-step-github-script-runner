@@ -15,11 +15,11 @@ workflows:
         title: Step CLI Test
         description: Use it to test this step locally with bitrise CLI
         run_if: true
-        inputs: # RPE-1055: replace them ./test-script.sh before merging
-        - repository: deliveroo/mobile-scripts
-        - script_path: promon/promon-upload-file.sh
-        - branch: eugenio/RPE-972/promon-shield-upload-app
-        - command_line_arguments: --local-file-path "$BITRISE_SOURCE_DIR/README.md" --remote-folder-path "deliveroo/Upload/rider" --tmp-folder-path "$BITRISE_SOURCE_DIR/tmp"
+        inputs:
+        - repository: deliveroo/bitrise-step-github-script-runner
+        - script_path: test-script.sh
+        - branch: master
+        - command_line_arguments: --test-key test-value
         - tmp_folder: "$BITRISE_SOURCE_DIR/tmp"
         - github_token: $GITHUB_TOKEN
   github-test:
@@ -28,10 +28,10 @@ workflows:
         title: Step Bitrise Test
         description: Use it to test this step directly in Bitrise
         run_if: true
-        inputs: # RPE-1055: replace them ./test-script.sh before merging
-        - repository: deliveroo/mobile-scripts
-        - script_path: promon/promon-upload-file.sh
-        - branch: eugenio/RPE-972/promon-shield-upload-app
-        - command_line_arguments: --local-file-path "$BITRISE_SOURCE_DIR/README.md" --remote-folder-path "deliveroo/Upload/rider" --tmp-folder-path "$BITRISE_SOURCE_DIR/tmp"
+        inputs:
+        - repository: deliveroo/bitrise-step-github-script-runner
+        - script_path: test-script.sh
+        - branch: master
+        - command_line_arguments: --test-key test-value
         - tmp_folder: "$BITRISE_SOURCE_DIR/tmp"
         - github_token: $GITHUB_TOKEN
