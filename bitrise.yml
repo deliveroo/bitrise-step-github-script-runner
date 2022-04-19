@@ -24,7 +24,7 @@ workflows:
         - github_token: $GITHUB_TOKEN
   github-test:
     steps:
-    - git::https://github.com/deliveroo/bitrise-step-github-script-runner.git@eugenio/RPE-1055/bitrise-step-github-script-runner: # RPE-1055: remove the branch before merging into master
+    - git::https://github.com/deliveroo/bitrise-step-github-script-runner.git
         title: Step Bitrise Test
         description: Use it to test this step directly in Bitrise
         run_if: true
