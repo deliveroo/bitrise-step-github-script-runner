@@ -56,5 +56,7 @@ chmod +x $downloaded_script_path
 
 echo "Running the remote script..."
 
+cat $downloaded_script_path
+
 command="$downloaded_script_path $command_line_arguments"
 bash -c "$command"
