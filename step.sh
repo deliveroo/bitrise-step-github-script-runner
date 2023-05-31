@@ -6,7 +6,7 @@
 #   1. Use it with private repos
 #   2. Pass command line arguments
 
-set -ex
+set -e
 
 function echoerr() { echo "$@" 1>&2; }
 
@@ -49,14 +49,12 @@ echo "Downloading the remote script locally..."
 
 downloaded_script_path="$tmp_folder/remote-script.sh"
 
-curl -v -H "Authorization: token $GITHUB_TOKEN" \
+curl -H "Authorization: token $GITHUB_TOKEN" \
   -H 'Accept: application/vnd.github.v3.raw' \
   -sSL "https://api.github.com/repos/$repository/contents/$script_path?ref=$branch" &> $downloaded_script_path
 chmod +x $downloaded_script_path
 
 echo "Running the remote script..."
-
-cat $downloaded_script_path
 
 command="$downloaded_script_path $command_line_arguments"
 bash -c "$command"
