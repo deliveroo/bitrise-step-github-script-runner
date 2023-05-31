@@ -49,7 +49,7 @@ echo "Downloading the remote script locally..."
 
 downloaded_script_path="$tmp_folder/remote-script.sh"
 
-curl -H "Authorization: token $GITHUB_TOKEN" \
+curl --fail -H "Authorization: token $GITHUB_TOKEN" \
   -H 'Accept: application/vnd.github.v3.raw' \
   -sSL "https://api.github.com/repos/$repository/contents/$script_path?ref=$branch" &> $downloaded_script_path
 chmod +x $downloaded_script_path
