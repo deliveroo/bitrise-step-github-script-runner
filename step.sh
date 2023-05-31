@@ -6,7 +6,7 @@
 #   1. Use it with private repos
 #   2. Pass command line arguments
 
-set -e
+set -ex
 
 function echoerr() { echo "$@" 1>&2; }
 
